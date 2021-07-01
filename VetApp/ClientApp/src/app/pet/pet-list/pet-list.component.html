@@ -1,0 +1,67 @@
+
+<div>
+  <div class="container">
+    <div class="content">
+      <h1 id="tableLabel">Pets</h1>
+
+       <p *ngIf="!pets"><em>Loading...</em></p>
+
+      <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pets">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Breed</th>
+            <th>Age</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pet of pets; let i = index">
+            <td>{{ i+1 }}</td>
+            <td><input type="text" [(ngModel)]="pet.name"></td>
+            <td>
+              <select name="species" [(ngModel)]="pet.species">
+                <option *ngFor="let species of SPECIES" value="{{species}}">{{species}}</option>
+              </select>
+            </td>
+            <td><input type="text" [(ngModel)]="pet.breed"> </td>
+            <td><input type="number" [(ngModel)]="pet.age"></td>
+            <td><input type="text" [(ngModel)]="pet.owner"></td>
+
+            <td><button type="submit" (click)="updatePet(pet)">Update</button></td>
+            <td><button type="submit" (click)="deletePet(pet.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <form class="form-content">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="pet.name"><br>
+
+        <label for="species">Species:</label>
+        <select name="species" id="species" [(ngModel)]="pet.species">
+          <option *ngFor="let species of SPECIES" value="{{species}}">{{species}}</option>
+        </select><br>
+
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" [(ngModel)]="pet.breed"><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" [(ngModel)]="pet.age"><br>
+
+
+        <label for="owner">Owner:</label>
+        <input type="text" id="owner" name="owner" [(ngModel)]="pet.owner"><br>
+
+        <p>{{errors}}</p>
+
+        <button type="submit" (click)="addPet()">Add Pet</button>
+      </form>
+    </div>
+
+
+  </div>
+
+</div>
+
