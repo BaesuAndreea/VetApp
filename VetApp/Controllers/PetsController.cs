@@ -42,6 +42,11 @@ namespace VetApp.Controllers
             return pet;
         }
 
+        /// <summary>
+        /// Filter pets by owner
+        /// </summary>
+        /// <param name="owner">the name of the owner</param>
+        /// <returns>list of pets for the given owner</returns>
         [HttpGet]
         [Route("filter/{owner}")]
         public ActionResult<IEnumerable<Pet>> FilterPets(string owner)

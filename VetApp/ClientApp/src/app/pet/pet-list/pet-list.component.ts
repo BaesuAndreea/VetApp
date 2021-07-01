@@ -14,6 +14,7 @@ export class PetListComponent implements OnInit {
   errors;
   public url: string;
   SPECIES = SPECIES;
+  owner: string;
 
   constructor(private http: HttpClient, @Inject('API_URL') private apiUrl: string) {
     this.url = `${this.apiUrl}pets`;
@@ -24,6 +25,15 @@ export class PetListComponent implements OnInit {
   loadPets() {
     this.http.get<Pet[]>(this.url).subscribe(result => {
       console.log(result);
+      this.pets = result;
+      this.errors = "";
+    }, (err) => {
+      this.errors = JSON.stringify(err);
+    })
+  }
+
+  loadFilteredPets() {
+    this.http.get<Pet[]>(`${this.url}/filter/${this.owner}`).subscribe(result => {
       this.pets = result;
       this.errors = "";
     }, (err) => {
@@ -53,6 +63,15 @@ export class PetListComponent implements OnInit {
       (err) => {
         this.errors = JSON.stringify(err);
       })
+  }
+
+  filterOwner() {
+    console.log("owner");
+    console.log(this.owner);
+    if (this.owner == "")
+      this.loadPets();
+    else
+      this.loadFilteredPets();      
   }
 
   ngOnInit() {
