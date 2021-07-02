@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using VetApp.Models;
+using VetApp.ViewModels.Pet;
 
 namespace VetApp
 {
-    public class MappingProfile
+    public class MappingProfile : Profile
     {
-
+        public MappingProfile()
+        {
+            CreateMap<Pet, PetViewModel>().ReverseMap();
+        }
     }
 }

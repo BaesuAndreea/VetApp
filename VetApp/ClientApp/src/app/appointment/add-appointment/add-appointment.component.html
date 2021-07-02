@@ -1,0 +1,29 @@
+
+<div>
+  <div class="container">
+    <div class="content">
+      <h1 id="tableLabel">Add Appointment</h1>
+
+      <form class="form-content">
+        <label for="pname">Pet name:</label>
+        <select name="petname" id="pname" [(ngModel)]="appointment.petId">
+          <option *ngFor="let pet of pets" value="{{pet.id}}">{{pet.name}}</option>
+        </select>
+
+        <label for="appointmentdate">Date Time:</label>
+        <input type="datetime-local" id="appointmentdate" name="daytime" [(ngModel)]="appointment.date">
+
+        <label for="description">Details:</label>
+        <textarea id="description" name="description" rows="2" cols="50" [(ngModel)]="appointment.details"></textarea>
+
+        <p>{{errors}}</p>
+
+        <button type="submit" (click)="addAppointment()">Add Appointment</button>
+      </form>
+    </div>
+
+
+  </div>
+
+</div>
+

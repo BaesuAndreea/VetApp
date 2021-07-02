@@ -12,6 +12,7 @@ import { AuthService } from "../service/auth-service";
 export class RegisterPageComponent implements OnInit  {
 
   errors: string;
+
   constructor(private http: HttpClient, @Inject('API_URL') private apiUrl: string,
     private router: Router,
     private authSvc: AuthService) { }
@@ -19,15 +20,16 @@ export class RegisterPageComponent implements OnInit  {
   ngOnInit() {
   }
 
-  register(userName, passWord, passWord2) {
+  register(name, email, specialization, passWord, passWord2) {
 
     if (passWord.value != passWord2.value) {
       this.errors = "The password and confirmation password do not match.";
     }
     else {
-    this.http.post(this.apiUrl + 'authentication/register', { email: userName.value, password: passWord.value, confirmPassword: passWord2.value })
+      this.http.post(this.apiUrl + 'authentication/register',
+        { name:name.value, email: email.value, specialization: specialization.value, password: passWord.value, confirmPassword: passWord2.value })
       .subscribe((response: RegisterResponse) => {
-        this.http.post(this.apiUrl + 'authentication/confirm', { email: userName.value, confirmationToken: response.confirmationToken })
+        this.http.post(this.apiUrl + 'authentication/confirm', { email: email.value, confirmationToken: response.confirmationToken })
           .subscribe(() => {
             this.router.navigateByUrl('');
           }, error => this.errors = error);

@@ -1,3 +1,5 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +19,8 @@ using System.Reflection;
 using System.Text;
 using VetApp.Data;
 using VetApp.Models;
+using VetApp.Validator;
+using VetApp.ViewModels.Pet;
 
 namespace VetApp
 {
@@ -64,8 +68,9 @@ namespace VetApp
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
                     };
                 });
-                
+
             services.AddControllersWithViews()
+                .AddFluentValidation()
                 .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter())); 
             services.AddRazorPages();
             // In production, the Angular files will be served from this directory
@@ -101,7 +106,7 @@ namespace VetApp
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-
+            services.AddTransient<IValidator<PetViewModel>, PetValidator>();
 
         }
     

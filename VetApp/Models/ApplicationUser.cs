@@ -8,5 +8,6 @@ namespace VetApp.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public string Specialization { get; set; }
     }
 }

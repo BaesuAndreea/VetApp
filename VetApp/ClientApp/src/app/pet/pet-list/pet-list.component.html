@@ -4,11 +4,15 @@
     <div class="content">
       <h1 id="tableLabel">Pets</h1>
 
-      <p *ngIf="!pets"><em>Loading...</em></p>
-
       <label for="fowner">Filter by owner:</label>
       <input type="text" id="fowner" name="fowner" [(ngModel)]="owner">
       <button type="submit" (click)="filterOwner()">Filter</button>
+      <br>
+      <button type="submit" (click)="addPet()">Add Pet</button>
+
+      <p *ngIf="!pets"><em>Loading...</em></p>
+
+
 
       <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pets">
         <thead>
@@ -39,29 +43,7 @@
           </tr>
         </tbody>
       </table>
-      <form class="form-content">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" [(ngModel)]="pet.name"><br>
 
-        <label for="species">Species:</label>
-        <select name="species" id="species" [(ngModel)]="pet.species">
-          <option *ngFor="let species of SPECIES" value="{{species}}">{{species}}</option>
-        </select><br>
-
-        <label for="breed">Breed:</label>
-        <input type="text" id="breed" name="breed" [(ngModel)]="pet.breed"><br>
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" [(ngModel)]="pet.age"><br>
-
-
-        <label for="owner">Owner:</label>
-        <input type="text" id="owner" name="owner" [(ngModel)]="pet.owner"><br>
-
-        <p>{{errors}}</p>
-
-        <button type="submit" (click)="addPet()">Add Pet</button>
-      </form>
     </div>
 
 

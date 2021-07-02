@@ -41,7 +41,8 @@ namespace VetApp.Controllers
             var user = new ApplicationUser
             {
                 Email = registerRequest.Email,
-                UserName = registerRequest.Email,
+                UserName = registerRequest.Name,
+                Specialization = registerRequest.Specialization,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
             var result = await _userManager.CreateAsync(user, registerRequest.Password);

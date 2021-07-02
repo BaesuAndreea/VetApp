@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pet, SPECIES } from '../models/pet';
 
 @Component({
@@ -16,7 +17,8 @@ export class PetListComponent implements OnInit {
   SPECIES = SPECIES;
   owner: string;
 
-  constructor(private http: HttpClient, @Inject('API_URL') private apiUrl: string) {
+  constructor(private http: HttpClient, @Inject('API_URL') private apiUrl: string,
+    private router: Router  ) {
     this.url = `${this.apiUrl}pets`;
     console.log(this.url);
     this.loadPets();
@@ -42,11 +44,7 @@ export class PetListComponent implements OnInit {
   }
 
   addPet() {
-    this.http.post(this.url, this.pet).subscribe(
-      () => { this.loadPets(); this.errors = ""; },
-      (err) => {
-        this.errors = JSON.stringify(err);
-      })
+    this.router.navigateByUrl('addpet')
   }
 
   updatePet(pet: Pet) {

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VetApp.Data;
 using VetApp.Models;
+using VetApp.ViewModels.Pet;
 
 namespace VetApp.Controllers
 {
@@ -15,10 +17,12 @@ namespace VetApp.Controllers
     public class PetsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public PetsController(ApplicationDbContext context)
+        public PetsController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Pets
@@ -58,8 +62,9 @@ namespace VetApp.Controllers
         // PUT: api/Pets/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPet(int id, Pet pet)
+        public async Task<IActionResult> PutPet(int id, PetViewModel petrequest)
         {
+            Pet pet = _mapper.Map<Pet>(petrequest);
             if (id != pet.Id)
             {
                 return BadRequest();
@@ -89,8 +94,9 @@ namespace VetApp.Controllers
         // POST: api/Pets
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Pet>> PostPet(Pet pet)
+        public async Task<ActionResult<Pet>> PostPet(PetViewModel petrequest)
         {
+            Pet pet = _mapper.Map<Pet>(petrequest);
             _context.Pets.Add(pet);
             await _context.SaveChangesAsync();
 

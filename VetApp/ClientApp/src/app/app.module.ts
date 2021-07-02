@@ -15,6 +15,10 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { PetListComponent } from './pet/pet-list/pet-list.component';
 import { RegisterPageComponent } from './Authentication/register-page/register-page.component';
 import { LoginPageComponent } from './Authentication/login-page/login-page.component';
+import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
+import { AddAppointmentComponent } from './appointment/add-appointment/add-appointment.component';
+import { AddPetComponent } from './pet/add-pet/add-pet.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { LoginPageComponent } from './Authentication/login-page/login-page.compo
     FetchDataComponent,
     PetListComponent,
     RegisterPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AppointmentListComponent,
+    AddAppointmentComponent,
+    AddPetComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,6 +44,9 @@ import { LoginPageComponent } from './Authentication/login-page/login-page.compo
       { path: 'register', component: RegisterPageComponent },
       { path: 'login', component: LoginPageComponent },
       { path: 'pets', component: PetListComponent },
+      { path: 'appointments', component: AppointmentListComponent },
+      { path: 'addappointment', component: AddAppointmentComponent },
+      { path: 'addpet', component: AddPetComponent },
     ])
   ],
   providers: [

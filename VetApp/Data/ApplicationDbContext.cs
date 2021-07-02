@@ -19,5 +19,6 @@ namespace VetApp.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+        public DbSet<VetApp.Models.Appointment> Appointment { get; set; }
     }
 }
