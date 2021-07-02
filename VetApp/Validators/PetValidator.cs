@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VetApp.Data;
-using VetApp.ViewModels.Pet;
+using VetApp.ViewModels.PetViewModels;
 
 namespace VetApp.Validator
 {

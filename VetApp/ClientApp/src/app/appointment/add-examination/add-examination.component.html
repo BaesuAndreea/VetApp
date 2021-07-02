@@ -1,0 +1,29 @@
+<p *ngIf="!examinations"><em>Loading...</em></p>
+<div id="cover1" class="cover">
+  <div class="container">
+    <div class="about">
+      <h2 id="tableLabel">Examinations</h2>
+    </div>
+
+  </div>
+</div>
+<div class="container">
+  <div class="reviews">
+    <div *ngFor="let examination of examinations.examinations">
+      <p>{{ examination.doctor.name }}</p>
+      <p>{{ examination.notes }}</p>
+
+    </div>
+    <!--<div *ngIf="userLogedIn">
+      <p><textarea id="review" name="review" rows="4" cols="50" #comment>Please write a review ...</textarea></p>
+      <button (click)="postComment(comment.value)"> Post Review </button>
+      <p *ngIf="userLogedIn"><button (click)="logOut()"> Log Out </button></p>
+    </div>-->
+  </div>
+
+</div>
+<div>
+  <p><textarea id="review" name="review" rows="4" cols="50" [(ngModel)]="notes"></textarea></p>
+  <button (click)="addExamination()"> Add Examination </button>
+</div>
+

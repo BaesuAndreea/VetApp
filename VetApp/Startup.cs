@@ -20,7 +20,7 @@ using System.Text;
 using VetApp.Data;
 using VetApp.Models;
 using VetApp.Validator;
-using VetApp.ViewModels.Pet;
+using VetApp.ViewModels.PetViewModels;
 
 namespace VetApp
 {

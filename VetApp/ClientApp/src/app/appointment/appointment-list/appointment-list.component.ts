@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../Authentication/service/auth-service';
 import { Appointment } from '../models/appointment';
 
 @Component({
@@ -15,7 +17,8 @@ export class AppointmentListComponent implements OnInit {
   showAll: boolean = false;
   owner: string;
 
-  constructor(private http: HttpClient, @Inject('API_URL') private apiUrl: string) {
+  constructor(private http: HttpClient, @Inject('API_URL') private apiUrl: string,
+    private authSvc: AuthService, private router: Router  ) {
     this.url = `${this.apiUrl}appointments`;
     this.loadAppointments();
   }
@@ -74,6 +77,13 @@ export class AppointmentListComponent implements OnInit {
     this.loadAppointments();
   }
 
+  userLoggedIn() {
+    return this.authSvc.userLogedIn();
+  }
+
+  addExamination(id: number) {
+    this.router.navigate(['addexamination'], { queryParams: { id: id } });
+  }
 
   ngOnInit() {
   }

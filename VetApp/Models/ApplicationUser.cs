@@ -9,5 +9,6 @@ namespace VetApp.Models
     public class ApplicationUser : IdentityUser
     {
         public string Specialization { get; set; }
+        public List<Examination> Examinations { get; set; }
     }
 }

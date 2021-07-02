@@ -44,6 +44,8 @@
     <None Remove="ClientApp\src\app\appointment\models\appointment.ts" />
     <None Remove="ClientApp\src\app\authentication\models\login-model.ts" />
     <None Remove="ClientApp\src\app\authentication\service\auth-service.ts" />
+    <None Remove="ClientApp\src\app\examination\models\examination-model.ts" />
+    <None Remove="ClientApp\src\interceptors\auth-token.interceptor.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +56,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\appointment\models\appointment.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\authentication\models\login-model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\authentication\service\auth-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\examination\models\examination-model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\interceptors\auth-token.interceptor.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

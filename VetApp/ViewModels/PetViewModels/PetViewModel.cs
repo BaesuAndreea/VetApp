@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VetApp.Models;
 
-namespace VetApp.ViewModels.Pet
+namespace VetApp.ViewModels.PetViewModels
 {
     public class PetViewModel
     {

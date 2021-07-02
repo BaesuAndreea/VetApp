@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VetApp.Data;
 using VetApp.Models;
-using VetApp.ViewModels.Pet;
+using VetApp.ViewModels.PetViewModels;
 
 namespace VetApp.Controllers
 {

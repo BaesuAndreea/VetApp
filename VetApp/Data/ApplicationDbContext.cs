@@ -20,5 +20,6 @@ namespace VetApp.Data
         {
         }
         public DbSet<VetApp.Models.Appointment> Appointment { get; set; }
+        public DbSet<VetApp.Models.Examination> Examination { get; set; }
     }
 }

@@ -36,6 +36,7 @@
 
             <td><button type="submit" (click)="updateAppointment(appointment)">Update</button></td>
             <td><button type="submit" (click)="deleteAppointment(appointment.id)">Delete</button></td>
+            <td><button type="submit" (click)="addExamination(appointment.id)" *ngIf="userLoggedIn()">Add Examination</button></td>
           </tr>
         </tbody>
       </table>

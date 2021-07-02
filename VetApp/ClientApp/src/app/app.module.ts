@@ -18,6 +18,8 @@ import { LoginPageComponent } from './Authentication/login-page/login-page.compo
 import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
 import { AddAppointmentComponent } from './appointment/add-appointment/add-appointment.component';
 import { AddPetComponent } from './pet/add-pet/add-pet.component';
+import { AddExaminationComponent } from './appointment/add-examination/add-examination.component';
+import { TokenInterceptor } from '../interceptors/auth-token.interceptor';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { AddPetComponent } from './pet/add-pet/add-pet.component';
     LoginPageComponent,
     AppointmentListComponent,
     AddAppointmentComponent,
-    AddPetComponent
+    AddPetComponent,
+    AddExaminationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,10 +50,12 @@ import { AddPetComponent } from './pet/add-pet/add-pet.component';
       { path: 'appointments', component: AppointmentListComponent },
       { path: 'addappointment', component: AddAppointmentComponent },
       { path: 'addpet', component: AddPetComponent },
+      { path: 'addexamination', component: AddExaminationComponent },
     ])
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

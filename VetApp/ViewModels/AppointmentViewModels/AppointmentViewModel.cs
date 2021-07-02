@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VetApp.Models;
 
-namespace VetApp.Models
+namespace VetApp.ViewModels.AppointmentViewModels
 {
-    public class Appointment
+    public class AppointmentViewModel
     {
         public int Id { get; set; }
         public int PetId { get; set; }
@@ -13,9 +14,5 @@ namespace VetApp.Models
         public DateTime Date { get; set; }
         public string Details { get; set; }
         public bool Finished { get; set; }
-
-        public List<Examination> Examinations { get; set; }
     }
-
-
 }
