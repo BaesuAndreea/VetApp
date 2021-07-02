@@ -13,6 +13,8 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { PetListComponent } from './pet/pet-list/pet-list.component';
+import { RegisterPageComponent } from './Authentication/register-page/register-page.component';
+import { LoginPageComponent } from './Authentication/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PetListComponent } from './pet/pet-list/pet-list.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    PetListComponent
+    PetListComponent,
+    RegisterPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,8 +34,8 @@ import { PetListComponent } from './pet/pet-list/pet-list.component';
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'register', component: RegisterPageComponent },
+      { path: 'login', component: LoginPageComponent },
       { path: 'pets', component: PetListComponent },
     ])
   ],
