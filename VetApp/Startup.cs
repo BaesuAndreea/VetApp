@@ -119,10 +119,20 @@ namespace VetApp
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-        if (env.IsDevelopment())
+
+
+            app.UseCors(builder =>
+                   builder.AllowAnyOrigin()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+               );
+
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
+
+                
             }
             else
             {
